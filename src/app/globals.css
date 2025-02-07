@@ -2,3 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Style for the scrollbar container */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+  }
+  
+  /* Style for the scrollbar track (background) */
+  ::-webkit-scrollbar-track {
+    background: #00000000; /* Light gray background */
+    border-radius: 10px; /* Rounded corners for track */
+  }
+  
+  /* Style for the scrollbar thumb (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: #00000000; /* Dark gray color */
+    border-radius: 10px; /* Rounded corners for thumb */
+    border: 1px solid #f1f1f100; /* Border around the thumb */
+  }
+  
+  /* Hover effect for the scrollbar thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker color when hovered */
+  }
+  
+  /* Optional: Style for the scrollbar when it’s in the active state */
+  ::-webkit-scrollbar:vertical {
+    background: #2d2d2d00; /* Light gray for vertical scrollbars */
+  }
+  
+  ::-webkit-scrollbar:horizontal {
+    background: #e0e0e0; /* Light gray for horizontal scrollbars */
+  }
+  

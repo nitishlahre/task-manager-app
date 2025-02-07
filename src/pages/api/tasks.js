@@ -2,9 +2,10 @@ import connectToDatabase from '../../libs/mongoDB';
 import Task from '../../models/task.model';
 
 export default async function handler(req, res) {
+  await connectToDatabase();
   if (req.method === 'POST') {
     try {
-      await connectToDatabase();
+      
       const { title, desc } = req.body;
 
       const newTask = new Task({ title, desc });
@@ -16,8 +17,11 @@ export default async function handler(req, res) {
   }
   else if (req.method === 'GET') {
     try {
-      await connectToDatabase();
+      // await connectToDatabase();
+      
       const tasks = await Task.find(); 
+      console.log(tasks);
+      
       return res.status(200).json(tasks); 
     } catch (err) {
       return res.status(500).json({ error: err.message });
@@ -26,7 +30,7 @@ export default async function handler(req, res) {
   else if (req.method === 'DELETE') {
     try {
       const { id } = req.query; 
-      await connectToDatabase();
+      // await connectToDatabase();
       const deletedTask = await Task.findByIdAndDelete(id); 
       if (!deletedTask) {
         return res.status(404).json({ error: 'Task not found' });
@@ -41,7 +45,7 @@ export default async function handler(req, res) {
     try {
       const { id } = req.query; 
       const { title, desc } = req.body; 
-      await connectToDatabase();
+      // await connectToDatabase();
       const updatedTask = await Task.findByIdAndUpdate(
         id, 
         { title, desc }, 

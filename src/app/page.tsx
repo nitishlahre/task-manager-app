@@ -5,7 +5,7 @@ import TaskManager from '../pages/task-manager';
 function page() {
 
   return (
-    <div className='bg-black text-white h-screen '>
+    <div className=' text-white  bg-slate-900 '>
       <TaskManager />
     </div>
   )

@@ -5,11 +5,14 @@ const connectToDatabase = async () => {
     return; 
   }
   const mongoUri = process.env.MONGO_URI;
+  console.log(mongoUri);
   
   await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+  console.log('db cntd');
+  
 };
 
 export default connectToDatabase;
