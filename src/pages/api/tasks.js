@@ -9,9 +9,9 @@ export default async function handler(req, res) {
 
       const newTask = new Task({ title, desc });
       await newTask.save();
-      return res.status(201).json(newTask); k
+      return res.status(201).json(newTask); 
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to create task' });
+      return res.status(500).json({ error: err.message });
     }
   }
   else if (req.method === 'GET') {
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       const tasks = await Task.find(); 
       return res.status(200).json(tasks); 
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to fetch tasks' });
+      return res.status(500).json({ error: err.message });
     }
   }
   else if (req.method === 'DELETE') {
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       }
       return res.status(200).json({ message: 'Task deleted successfully' }); 
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to delete task' });
+      return res.status(500).json({ error: err.message });
     }
   }
   
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
       }
       return res.status(200).json(updatedTask); 
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to update task' });
+      return res.status(500).json({ error: err.message });
     }
   }
   else {
